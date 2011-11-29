@@ -9,10 +9,10 @@ TARGET = CSVSearch
 RM=rm -f
 
 $(TARGET): $(OBJECTS)
-	$(CC) -ldl  -Wl,-rpath,. -L. -lfuzzy -o $@ $(OBJECTS) -Wl,-undefined -Wl,dynamic_lookup
+	$(CC) -pg -rdynamic -Wl,-rpath,. -L. -lfuzzy -o $@ $(OBJECTS) -ldl -Wl,--unresolved-symbols=ignore-in-shared-libs
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< 
+	$(CC) $(CFLAGS) -c -pg $< 
 
 
 $(DEPS): $(SOURCES)
