@@ -22,5 +22,8 @@ using std::cout;
 using std::endl;
 using std::ifstream;
 
+using libfuzzy::FuzzyLib;
+using libfuzzy::LevenshteinAutomata;
+
 
 #endif /* __MAIN_H__ */

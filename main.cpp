@@ -13,10 +13,22 @@ int main (int argc, char** argv) {
     unsigned int paramPos = 1;
     if (string(argv[1]) == string("-f")){
         ifstream input(argv[2] , ifstream::in);
-        parser.ParseCSV(input);
         paramPos = 3;
-    }else
-        parser.ParseCSV(cin);
+        if (string(argv[paramPos]) == string("-t")){
+            parser.TokenizeText(input);
+            ++paramPos;
+        }else{
+            parser.ParseCSV(input);
+        }
+    }else{
+        if (string(argv[paramPos]) == string("-t")){
+            parser.TokenizeText(cin);
+            ++paramPos;
+        }else{
+            parser.ParseCSV(cin);
+        }
+    }
+    
     numberOfPatterns = atoi(argv[paramPos]);
 
 

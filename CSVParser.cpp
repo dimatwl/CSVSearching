@@ -67,6 +67,33 @@ bool CSVParser::ParseCSV(istream& inpStr){
     return result;
 }
 
+bool CSVParser::TokenizeText(istream& inpStr){
+    int result(0);
+
+    string field;
+    this->lines.clear();
+    vector<string> line;
+    string csv = "";
+    string cell;
+    while(std::getline(inpStr,cell)){
+        csv += cell + "\n";
+    }
+    string::const_iterator aChar = csv.begin();
+    while (aChar != csv.end()){
+        if (isspace(*aChar) || ispunct(*aChar)){
+            if (field.size() > 0){
+                line.push_back(field);
+                this->lines.push_back(line);
+                field.clear();
+                line.clear();
+            }
+        } else{
+            field.push_back(*aChar);
+        }
+        aChar++;
+    }
+}
+
 vector<string> CSVParser::GetNextLine(){
     vector<string> tmp = this->lines.back();
     this->lines.pop_back();

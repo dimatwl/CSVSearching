@@ -5,6 +5,7 @@
 #include <vector>
 #include <istream>
 #include <iostream>
+#include <ctype.h>
 
 using std::string;
 using std::vector;
@@ -18,6 +19,7 @@ class CSVParser{
 public:
     CSVParser();
     bool ParseCSV(istream& inpStr);
+    bool TokenizeText(istream& inpStr);
     vector<string> GetNextLine();
     bool AtEnd();
     
