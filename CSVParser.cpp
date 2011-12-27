@@ -67,8 +67,8 @@ bool CSVParser::ParseCSV(istream& inpStr){
     return result;
 }
 
-bool CSVParser::TokenizeText(istream& inpStr){
-    int result(0);
+void CSVParser::TokenizeText(istream& inpStr){
+    //int result(0);
 
     string field;
     this->lines.clear();

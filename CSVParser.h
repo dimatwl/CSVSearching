@@ -19,7 +19,7 @@ class CSVParser{
 public:
     CSVParser();
     bool ParseCSV(istream& inpStr);
-    bool TokenizeText(istream& inpStr);
+    void TokenizeText(istream& inpStr);
     vector<string> GetNextLine();
     bool AtEnd();
     
